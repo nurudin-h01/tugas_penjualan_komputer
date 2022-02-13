@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `z_penjualan_komputer`
@@ -50,8 +50,8 @@ CREATE TABLE `d_customer` (
   `nama_belakang` varchar(20) NOT NULL,
   `alamat` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL,
-  `nama_lengkap` char(41) GENERATED ALWAYS AS (concat(`nama_depan`,_utf8mb4' ',`nama_belakang`)) VIRTUAL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nama_lengkap` char(41) GENERATED ALWAYS AS (concat(`nama_depan`,_utf8' ',`nama_belakang`)) VIRTUAL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data untuk tabel `d_customer`
@@ -71,7 +71,7 @@ CREATE TABLE `ref_produk` (
   `id_produk` int NOT NULL,
   `nama_produk` varchar(20) NOT NULL,
   `harga` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data untuk tabel `ref_produk`
@@ -99,7 +99,7 @@ CREATE TABLE `s_penjualan` (
   `jumlah_produk` int NOT NULL,
   `total_produk` int NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data untuk tabel `s_penjualan`
@@ -119,7 +119,7 @@ CREATE TABLE `s_stock` (
   `id_stock` int NOT NULL,
   `id_produk` int NOT NULL,
   `jumlah` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data untuk tabel `s_stock`
@@ -139,7 +139,7 @@ CREATE TABLE `s_stock_in` (
   `id_produk` int NOT NULL,
   `jumlah` int NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data untuk tabel `s_stock_in`
@@ -172,7 +172,7 @@ CREATE TABLE `s_stock_out` (
   `id_produk` int NOT NULL,
   `jumlah` int NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data untuk tabel `s_stock_out`

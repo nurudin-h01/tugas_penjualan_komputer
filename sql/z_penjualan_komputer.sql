@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 13 Feb 2022 pada 05.16
--- Versi server: 8.0.27
--- Versi PHP: 7.4.19
+-- Host: 127.0.0.1
+-- Generation Time: Feb 13, 2022 at 05:09 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -15,66 +15,63 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `z_penjualan_komputer`
 --
 
-CREATE DATABASE IF NOT EXISTS z_penjualan_komputer;
-USE z_penjualan_komputer;
 DELIMITER $$
 --
--- Prosedur
+-- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `p_cari_penjualan` (IN `tgl` DATE)   BEGIN
-SELECT ref_produk.nama_produk, s_penjualan.total_produk, ref_produk.harga, s_penjualan.jumlah_produk, d_customer.nama_depan FROM s_penjualan JOIN ref_produk ON s_penjualan.id_produk = ref_produk.id_produk JOIN d_customer ON d_customer.id_customer = s_penjualan.id_customer WHERE tanggal = tgl;
-END$$
+$$
 
 --
--- Fungsi
+-- Functions
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `f_hitung_diskon` (`harga` INT, `diskon` INT) RETURNS INT  return (harga - (harga * (diskon / 100)))$$
+$$
 
 DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `d_customer`
+-- Table structure for table `d_customer`
 --
 
 CREATE TABLE `d_customer` (
-  `id_customer` int NOT NULL,
-  `nama_depan` varchar(20) NOT NULL,
-  `nama_belakang` varchar(20) NOT NULL,
-  `alamat` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
+  `id_customer` int(11) NOT NULL,
+  `nama_depan` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_belakang` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `alamat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `nama_lengkap` char(41) GENERATED ALWAYS AS (concat(`nama_depan`,_utf8' ',`nama_belakang`)) VIRTUAL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `d_customer`
+-- Dumping data for table `d_customer`
 --
 
 INSERT INTO `d_customer` (`id_customer`, `nama_depan`, `nama_belakang`, `alamat`, `email`) VALUES
 (1, 'Budi', 'Santoso', 'Yogyakarta', 'budi@mail.com'),
-(2, 'Rudi', 'Santoso', 'Yogyakarta', 'rudi@mail.com');
+(2, 'Rudi', 'Santoso', 'Yogyakarta', 'rudi@mail.com'),
+(5, 'Ahmad', 'Hasyim', 'Yogyakarta', 'af@mail.com');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ref_produk`
+-- Table structure for table `ref_produk`
 --
 
 CREATE TABLE `ref_produk` (
-  `id_produk` int NOT NULL,
-  `nama_produk` varchar(20) NOT NULL,
-  `harga` int NOT NULL
+  `id_produk` int(11) NOT NULL,
+  `nama_produk` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `ref_produk`
+-- Dumping data for table `ref_produk`
 --
 
 INSERT INTO `ref_produk` (`id_produk`, `nama_produk`, `harga`) VALUES
@@ -89,40 +86,39 @@ INSERT INTO `ref_produk` (`id_produk`, `nama_produk`, `harga`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `s_penjualan`
+-- Table structure for table `s_penjualan`
 --
 
 CREATE TABLE `s_penjualan` (
-  `id_penjualan` int NOT NULL,
-  `id_customer` int NOT NULL,
-  `id_produk` int NOT NULL,
-  `jumlah_produk` int NOT NULL,
-  `total_produk` int NOT NULL,
-  `tanggal` date NOT NULL
+  `id_penjualan` int(11) NOT NULL,
+  `id_customer` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `jumlah_produk` int(11) NOT NULL,
+  `tanggal` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `s_penjualan`
+-- Dumping data for table `s_penjualan`
 --
 
-INSERT INTO `s_penjualan` (`id_penjualan`, `id_customer`, `id_produk`, `jumlah_produk`, `total_produk`, `tanggal`) VALUES
-(1, 1, 1, 2, 200000, '2022-02-09'),
-(2, 2, 2, 2, 400000, '2022-02-08');
+INSERT INTO `s_penjualan` (`id_penjualan`, `id_customer`, `id_produk`, `jumlah_produk`, `tanggal`) VALUES
+(3, 5, 6, 4, '2022-02-13 22:34:47'),
+(4, 2, 4, 12, '2022-02-13 23:06:33');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `s_stock`
+-- Table structure for table `s_stock`
 --
 
 CREATE TABLE `s_stock` (
-  `id_stock` int NOT NULL,
-  `id_produk` int NOT NULL,
-  `jumlah` int NOT NULL
+  `id_stock` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `s_stock`
+-- Dumping data for table `s_stock`
 --
 
 INSERT INTO `s_stock` (`id_stock`, `id_produk`, `jumlah`) VALUES
@@ -131,18 +127,18 @@ INSERT INTO `s_stock` (`id_stock`, `id_produk`, `jumlah`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `s_stock_in`
+-- Table structure for table `s_stock_in`
 --
 
 CREATE TABLE `s_stock_in` (
-  `id_stock_in` int NOT NULL,
-  `id_produk` int NOT NULL,
-  `jumlah` int NOT NULL,
+  `id_stock_in` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `s_stock_in`
+-- Dumping data for table `s_stock_in`
 --
 
 INSERT INTO `s_stock_in` (`id_stock_in`, `id_produk`, `jumlah`, `tanggal`) VALUES
@@ -150,7 +146,7 @@ INSERT INTO `s_stock_in` (`id_stock_in`, `id_produk`, `jumlah`, `tanggal`) VALUE
 (2, 3, 4, '2022-01-02');
 
 --
--- Trigger `s_stock_in`
+-- Triggers `s_stock_in`
 --
 DELIMITER $$
 CREATE TRIGGER `delete stok masuk` AFTER DELETE ON `s_stock_in` FOR EACH ROW UPDATE s_stock SET jumlah = jumlah - OLD.jumlah WHERE id_produk = s_stock.id_produk
@@ -164,25 +160,25 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `s_stock_out`
+-- Table structure for table `s_stock_out`
 --
 
 CREATE TABLE `s_stock_out` (
-  `id_stock_out` int NOT NULL,
-  `id_produk` int NOT NULL,
-  `jumlah` int NOT NULL,
+  `id_stock_out` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `s_stock_out`
+-- Dumping data for table `s_stock_out`
 --
 
 INSERT INTO `s_stock_out` (`id_stock_out`, `id_produk`, `jumlah`, `tanggal`) VALUES
 (1, 1, 3, '2022-02-02');
 
 --
--- Trigger `s_stock_out`
+-- Triggers `s_stock_out`
 --
 DELIMITER $$
 CREATE TRIGGER `delete_stok_keluar` AFTER DELETE ON `s_stock_out` FOR EACH ROW UPDATE s_stock SET jumlah = jumlah + OLD.jumlah WHERE id_produk = s_stock.id_produk
@@ -196,121 +192,119 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `v_jumlah_pendapatan`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `v_jumlah_pendapatan`
+-- (See below for the actual view)
 --
 CREATE TABLE `v_jumlah_pendapatan` (
-`jumlah_produk` int
-,`nama_produk` varchar(20)
-,`total_produk` int
 );
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_jumlah_pendapatan`
+-- Structure for view `v_jumlah_pendapatan`
 --
 DROP TABLE IF EXISTS `v_jumlah_pendapatan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_jumlah_pendapatan`  AS SELECT `ref_produk`.`nama_produk` AS `nama_produk`, `s_penjualan`.`jumlah_produk` AS `jumlah_produk`, `s_penjualan`.`total_produk` AS `total_produk` FROM (`ref_produk` join `s_penjualan` on((`s_penjualan`.`id_produk` = `ref_produk`.`id_produk`)))  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_jumlah_pendapatan`  AS SELECT `ref_produk`.`nama_produk` AS `nama_produk`, `s_penjualan`.`jumlah_produk` AS `jumlah_produk`, `s_penjualan`.`total_produk` AS `total_produk` FROM (`ref_produk` join `s_penjualan` on(`s_penjualan`.`id_produk` = `ref_produk`.`id_produk`)) ;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `d_customer`
+-- Indexes for table `d_customer`
 --
 ALTER TABLE `d_customer`
   ADD PRIMARY KEY (`id_customer`);
 
 --
--- Indeks untuk tabel `ref_produk`
+-- Indexes for table `ref_produk`
 --
 ALTER TABLE `ref_produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indeks untuk tabel `s_penjualan`
+-- Indexes for table `s_penjualan`
 --
 ALTER TABLE `s_penjualan`
   ADD PRIMARY KEY (`id_penjualan`),
-  ADD UNIQUE KEY `id_customer` (`id_customer`),
-  ADD UNIQUE KEY `id_produk` (`id_produk`);
+  ADD KEY `id_customer` (`id_customer`) USING BTREE,
+  ADD KEY `id_produk` (`id_produk`) USING BTREE;
 
 --
--- Indeks untuk tabel `s_stock`
+-- Indexes for table `s_stock`
 --
 ALTER TABLE `s_stock`
   ADD PRIMARY KEY (`id_stock`),
   ADD UNIQUE KEY `id_produk_2` (`id_produk`);
 
 --
--- Indeks untuk tabel `s_stock_in`
+-- Indexes for table `s_stock_in`
 --
 ALTER TABLE `s_stock_in`
   ADD PRIMARY KEY (`id_stock_in`),
   ADD UNIQUE KEY `id_produk` (`id_produk`);
 
 --
--- Indeks untuk tabel `s_stock_out`
+-- Indexes for table `s_stock_out`
 --
 ALTER TABLE `s_stock_out`
   ADD PRIMARY KEY (`id_stock_out`),
   ADD UNIQUE KEY `id_produk` (`id_produk`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `d_customer`
+-- AUTO_INCREMENT for table `d_customer`
 --
 ALTER TABLE `d_customer`
-  MODIFY `id_customer` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `ref_produk`
+-- AUTO_INCREMENT for table `ref_produk`
 --
 ALTER TABLE `ref_produk`
-  MODIFY `id_produk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `s_penjualan`
+-- AUTO_INCREMENT for table `s_penjualan`
 --
 ALTER TABLE `s_penjualan`
-  MODIFY `id_penjualan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `s_stock`
+-- AUTO_INCREMENT for table `s_stock`
 --
 ALTER TABLE `s_stock`
-  MODIFY `id_stock` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `s_stock_in`
+-- AUTO_INCREMENT for table `s_stock_in`
 --
 ALTER TABLE `s_stock_in`
-  MODIFY `id_stock_in` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_stock_in` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `s_stock_out`
+-- AUTO_INCREMENT for table `s_stock_out`
 --
 ALTER TABLE `s_stock_out`
-  MODIFY `id_stock_out` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_stock_out` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `s_penjualan`
+-- Constraints for table `s_penjualan`
 --
 ALTER TABLE `s_penjualan`
-  ADD CONSTRAINT `s_penjualan_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `ref_produk` (`id_produk`);
+  ADD CONSTRAINT `s_penjualan_FK` FOREIGN KEY (`id_customer`) REFERENCES `d_customer` (`id_customer`) ON DELETE CASCADE,
+  ADD CONSTRAINT `s_penjualan_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `ref_produk` (`id_produk`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `s_stock`
+-- Constraints for table `s_stock`
 --
 ALTER TABLE `s_stock`
   ADD CONSTRAINT `s_stock` FOREIGN KEY (`id_produk`) REFERENCES `s_stock_in` (`id_produk`) ON DELETE CASCADE ON UPDATE CASCADE,

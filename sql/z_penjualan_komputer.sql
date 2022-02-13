@@ -21,6 +21,9 @@ SET time_zone = "+00:00";
 -- Database: `z_penjualan_komputer`
 --
 
+CREATE DATABASE IF NOT EXISTS z_penjualan_komputer;
+USE z_penjualan_komputer;
+
 DELIMITER $$
 --
 -- Procedures
@@ -94,6 +97,7 @@ CREATE TABLE `s_penjualan` (
   `id_customer` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `jumlah_produk` int(11) NOT NULL,
+  `total_produk` int(11) NOT NULL,
   `tanggal` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -101,9 +105,9 @@ CREATE TABLE `s_penjualan` (
 -- Dumping data for table `s_penjualan`
 --
 
-INSERT INTO `s_penjualan` (`id_penjualan`, `id_customer`, `id_produk`, `jumlah_produk`, `tanggal`) VALUES
-(3, 5, 6, 4, '2022-02-13 22:34:47'),
-(4, 2, 4, 12, '2022-02-13 23:06:33');
+INSERT INTO `s_penjualan` (`id_penjualan`, `id_customer`, `id_produk`, `jumlah_produk`, `total_produk`, `tanggal`) VALUES
+(1, 1, 1, 2, 200000, '2022-02-09'),
+(2, 2, 2, 2, 400000, '2022-02-08');
 
 -- --------------------------------------------------------
 
@@ -196,16 +200,20 @@ DELIMITER ;
 -- (See below for the actual view)
 --
 CREATE TABLE `v_jumlah_pendapatan` (
+`nama_produk` varchar(20)
+,`jumlah_produk` int(11)
+,`total_produk` int(11)
 );
 
 -- --------------------------------------------------------
 
 --
--- Structure for view `v_jumlah_pendapatan`
+-- Struktur untuk view `v_jumlah_pendapatan`
 --
 DROP TABLE IF EXISTS `v_jumlah_pendapatan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_jumlah_pendapatan`  AS SELECT `ref_produk`.`nama_produk` AS `nama_produk`, `s_penjualan`.`jumlah_produk` AS `jumlah_produk`, `s_penjualan`.`total_produk` AS `total_produk` FROM (`ref_produk` join `s_penjualan` on(`s_penjualan`.`id_produk` = `ref_produk`.`id_produk`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_jumlah_pendapatan`  AS SELECT `ref_produk`.`nama_produk` AS `nama_produk`, `s_penjualan`.`jumlah_produk` AS `jumlah_produk`, `s_penjualan`.`total_produk` AS `total_produk` FROM (`ref_produk` join `s_penjualan` on((`s_penjualan`.`id_produk` = `ref_produk`.`id_produk`)))  ;
+
 
 --
 -- Indexes for dumped tables

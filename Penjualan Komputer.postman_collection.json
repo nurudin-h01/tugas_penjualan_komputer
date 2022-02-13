@@ -1,0 +1,843 @@
+{
+	"info": {
+		"_postman_id": "60fc8fdc-d9f1-4160-ae90-bea80fc88148",
+		"name": "Penjualan Komputer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Stok",
+			"item": [
+				{
+					"name": "Get Detail Stok",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Stok In",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-in/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-in",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Stok Out",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-out/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-out",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Stok",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Stok In",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Stok Out",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Add Data Stok",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_stock\": 2,\r\n    \"id_produk\": 3,\r\n    \"jumlah\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Data Stok In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_stock_in\": 3,\r\n    \"id_produk\": 3,\r\n    \"jumlah\": 5,\r\n    \"tanggal\": \"2022-02-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Data Stok Out",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_stock_out\": 3,\r\n    \"id_produk\": 3,\r\n    \"jumlah\": 5,\r\n    \"tanggal\": \"2022-02-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-out",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Stok In",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_produk\": 2,\r\n    \"jumlah\": 3,\r\n    \"id_stock_in\": 1,\r\n    \"tanggal\": \"2022-01-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Stok Out",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_produk\": 2,\r\n    \"jumlah\": 3,\r\n    \"id_stock_in\": 1,\r\n    \"tanggal\": \"2022-01-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Stok",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_stock\": 1,\r\n    \"id_produk\": 2,\r\n    \"jumlah\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Stok",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Stok In",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-in/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-in",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Stok Out",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/stock/stok-out/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"stock",
+								"stok-out",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produk",
+			"item": [
+				{
+					"name": "Get All Produk",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/produk/produk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"produk",
+								"produk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Product ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/produk/produk/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"produk",
+								"produk",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Produk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_produk\": 8,\r\n    \"nama_produk\": \"flashdisk\",\r\n    \"harga\": 120000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/produk/produk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"produk",
+								"produk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Produk",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama_produk\": \"keyboard gaming\",\r\n    \"harga\": 300000,\r\n    \"id_produk\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/produk/produk/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"produk",
+								"produk",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Produk",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/produk/produk/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"produk",
+								"produk",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Penjualan",
+			"item": [
+				{
+					"name": "Get All Penjualan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/penjualan/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"penjualan",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Penjualan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/penjualan/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"penjualan",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Penjualan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_penjualan\": 3,\r\n    \"id_customer\": 1,\r\n    \"id_produk\": 2,\r\n    \"jumlah_produk\": 3,\r\n    \"total_produk\": 30000,\r\n    \"tanggal\": \"2022-02-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/penjualan/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"penjualan",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Penjualan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_penjualan\": 1,\r\n    \"id_customer\": 1,\r\n    \"id_produk\": 2,\r\n    \"jumlah_produk\": 5,\r\n    \"total_produk\": 50000,\r\n    \"tanggal\": \"2022-02-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/penjualan/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"penjualan",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Penjualan",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/penjualan/delete/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"penjualan",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get All Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/customer/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"customer",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/customer/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"customer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama_depan\": \"andi\",\r\n    \"nama_belakang\": \"pamungkas\",\r\n    \"alamat\": \"bali\",\r\n    \"email\": \"andi@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/customer/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"customer",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama_depan\": \"andi\",\r\n    \"nama_belakang\": \"pamungkas\",\r\n    \"alamat\": \"bali\",\r\n    \"email\": \"andi@mail.com\",\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10000/api/customer/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"customer",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10000/api/customer/delete/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"api",
+								"customer",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

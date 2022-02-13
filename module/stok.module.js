@@ -9,17 +9,7 @@ class _stok {
 	// get all list stok
 	listStok() {
 		const sql = {
-			query: `
-			SELECT 
-				s_stock.id_stock, 
-				s_stock.id_produk, 
-				s_stock.jumlah, 
-				ref_produk.nama_produk, 
-				ref_produk.harga 
-			FROM 
-				s_stock JOIN 
-				ref_produk ON 
-				ref_produk.id_produk = s_stock.id_produk `,
+			query: `SELECT * FROM s_stock`,
 			params: [],
 		};
 
@@ -359,16 +349,73 @@ class _stok {
 			});
 	}
 
-	getDetailKaryawan(id) {
+	getDetailStok(id) {
 		const sql = {
 			query: `
 				SELECT
-					emp.id,
-					emp.name,
-					emp.date_birth,
-					emp.position
-				FROM tb_employee emp
-				WHERE emp.id = ?`,
+					*
+				FROM s_stock
+				WHERE id_stock = ?`,
+			params: [id],
+		};
+
+		return mysql
+			.query(sql.query, sql.params)
+			.then((data) => {
+				return {
+					status: true,
+					data,
+				};
+			})
+			.catch((error) => {
+				if (debug) {
+					console.error("getDetailKaryawan Error:", error);
+				}
+
+				return {
+					status: false,
+					error,
+				};
+			});
+	}
+
+	getDetailStokIn(id) {
+		const sql = {
+			query: `
+				SELECT
+					*
+				FROM s_stock_in
+				WHERE id_stock_in = ?`,
+			params: [id],
+		};
+
+		return mysql
+			.query(sql.query, sql.params)
+			.then((data) => {
+				return {
+					status: true,
+					data,
+				};
+			})
+			.catch((error) => {
+				if (debug) {
+					console.error("getDetailKaryawan Error:", error);
+				}
+
+				return {
+					status: false,
+					error,
+				};
+			});
+	}
+
+	getDetailStokOut(id) {
+		const sql = {
+			query: `
+				SELECT
+					*
+				FROM s_stock_out
+				WHERE id_stock_out = ?`,
 			params: [id],
 		};
 

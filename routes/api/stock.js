@@ -79,4 +79,19 @@ router.delete("/stok-out/:id", async function (req, res, next) {
 	helper.sendResponse(res, deletestok);
 });
 
+router.get("/stok/:id", async function (req, res, next) {
+	const detail = await m$stok.getDetailStok(req.params.id);
+	helper.sendResponse(res, detail);
+});
+
+router.get("/stok-in/:id", async function (req, res, next) {
+	const detail = await m$stok.getDetailStokIn(req.params.id);
+	helper.sendResponse(res, detail);
+});
+
+router.get("/stok-out/:id", async function (req, res, next) {
+	const detail = await m$stok.getDetailStokOut(req.params.id);
+	helper.sendResponse(res, detail);
+});
+
 module.exports = router;

@@ -10,3 +10,10 @@ To started, must do:
 
 ## Postman Documentation
 https://documenter.getpostman.com/view/18559178/UVeNm2w5
+
+## Kelompok 4
+1. Ahmad Febrianto
+2. Ahmad Mujib
+3. Danis Ardani
+4. Muhammad Nurudin Hidayat
+5. Salsabillah Febrianti
